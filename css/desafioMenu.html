@@ -7,7 +7,105 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            background-color: rgb(164, 164, 164);
+            font-family: 'Oswald', sans-serif;
+        }
+
+        header {
+            border-bottom: steelblue 5px;
+            height: 50px;
+            padding: 10px 30px;
+        }
+        .cabecalho {
+            background: #242424;
+            border-bottom: solid steelblue 5px;
+            color: snow;
+            height: 80px;
+            box-sizing: content-box;
+        }
+        .cabecalho a {
+            text-decoration: none;
+            color: snow;
+            font-size: 1.3em;
+        }
+
+        .menu-toggle {
+            float: right;
+            background-color:#eee;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 20px 15px
+        }
+
+        @media (min-width: 679) {
+            .menu-toggle {display: none;}
+        }
+
+        @media (max-width: 680px) {
+            .menu {display: none;}
+        }
+
+        @media (max-width: 910px) {
+            .autenticacao {display: none;}
+        }
+
+        .menu {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .menu a {
+            padding: 15px;
+        }
+        
+        .menu a:hover,
+        .menu a.selected {
+            color: #242424;
+            background-color: steelblue;
+        }
+
+        .logo {
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+        .logo img {
+            height: 100%;
+        }
+        .autenticacao {
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+        .autenticacao a{
+            text-decoration: none;
+        }
+
+        .botao{
+            padding: 10px 25px;
+            border-radius: 30px;
+            background-color: red;
+            text-align: center;
+        }
+    
     </style>
 </head>
 
@@ -16,8 +114,7 @@
         <div class="logo">
             <a href="#inicio">
                 <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
-            </a>
-        </div>
+            </a></div>
         <button class="menu-toggle">
             <i class="fa fa-lg fa-bars"></i>
         </button>
@@ -45,6 +142,15 @@
 
     <script>
         // ...
+        window.onhashchange = function(e) {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            console.log(oldURL, newURL)
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            oldLink && oldMenu.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+        }
     </script>
 </body>
 
