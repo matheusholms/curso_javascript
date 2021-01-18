@@ -1,6 +1,10 @@
 const colors = {
     p: '#388e3c',
     div: '#1565c0',
+    main: 'green',
+    header: 'blue',
+    footer: 'yellow',
+    nav: 'orange',
     get(tag) {
         return this[tag] ? this[tag] : this.padrao
     }
